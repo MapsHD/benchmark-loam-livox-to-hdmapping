@@ -329,24 +329,24 @@ int main(int argc, char **argv)
             }
         }
        
-        if (m.getTopic() == "/aft_mapped_path") {
-            ROS_INFO("Received message on topic: /aft_mapped_path");
+        if (m.getTopic() == "/aft_mapped_to_init") {
+            ROS_INFO("Received message on topic: /aft_mapped_to_init");
 
-            nav_msgs::Path::ConstPtr odom_msg = m.instantiate<nav_msgs::Path>();
+            nav_msgs::Odometry::ConstPtr odom_msg = m.instantiate<nav_msgs::Odometry>();
 
             if (!odom_msg) {
                 ROS_ERROR("Odometry message deserialization error!");
                 return 1;
             }
 
-            double x = odom_msg->poses[0].pose.position.x;
-            double y = odom_msg->poses[0].pose.position.y;
-            double z = odom_msg->poses[0].pose.position.z;
-        
-            double qx = odom_msg->poses[0].pose.orientation.x;
-            double qy = odom_msg->poses[0].pose.orientation.y;
-            double qz = odom_msg->poses[0].pose.orientation.z;
-            double qw = odom_msg->poses[0].pose.orientation.w;
+            double x = odom_msg->pose.pose.position.x;
+            double y = odom_msg->pose.pose.position.y;
+            double z = odom_msg->pose.pose.position.z;
+
+            double qx = odom_msg->pose.pose.orientation.x;
+            double qy = odom_msg->pose.pose.orientation.y;
+            double qz = odom_msg->pose.pose.orientation.z;
+            double qw = odom_msg->pose.pose.orientation.w;
 
             TrajectoryPose pose;
 
@@ -377,31 +377,31 @@ int main(int argc, char **argv)
         }
     }
 
-    std::cout << "start transforming point to global coordinate system" << std::endl;
+    // std::cout << "start transforming point to global coordinate system" << std::endl;
 
-    for(int i = 0; i < points_global.size(); i++){
-        //auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp);
-        //auto index_pose = std::distance(trajectory.begin(), lower);
+    // for(int i = 0; i < points_global.size(); i++){
+    //     //auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp);
+    //     //auto index_pose = std::distance(trajectory.begin(), lower);
 
-        if(i % 1000000 == 0){
-            std::cout << "computed: " << i << " of " << points_global.size() << std::endl;
-        }
+    //     if(i % 1000000 == 0){
+    //         std::cout << "computed: " << i << " of " << points_global.size() << std::endl;
+    //     }
         
-        auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp,
-                                              [](TrajectoryPose lhs, double rhs) -> bool
-                                              { return lhs.timestamp_ns < rhs; });
+    //     auto lower = std::lower_bound(trajectory.begin(), trajectory.end(), points_global[i].timestamp,
+    //                                           [](TrajectoryPose lhs, double rhs) -> bool
+    //                                           { return lhs.timestamp_ns < rhs; });
 
 
-                                              //std::vector<TrajectoryPose>
-        int index_pose = std::distance(trajectory.begin(), lower) - 1;
-        if (index_pose >= 0 && index_pose < trajectory.size())
-        {
-            points_global[i].point = trajectory[index_pose].pose * points_global[i].point;
-        }
-    }
+    //                                           //std::vector<TrajectoryPose>
+    //     int index_pose = std::distance(trajectory.begin(), lower) - 1;
+    //     if (index_pose >= 0 && index_pose < trajectory.size())
+    //     {
+    //         points_global[i].point = trajectory[index_pose].pose * points_global[i].point;
+    //     }
+    // }
     
                    
-    std::cout << "transforming point to global coordinate system finished" << std::endl;
+    // std::cout << "transforming point to global coordinate system finished" << std::endl;
 
     std::cout << "start loading pc" << std::endl;
     std::cout << "loading pc finished" << std::endl;
