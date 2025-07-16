@@ -48,7 +48,7 @@ include_directories(
   common
 )
 
-add_executable(listener src/loam_livox_odometry_subscriber.cpp)
+add_executable(listener src/loam_livox_odometry_subscriber.cpp src/laz_writer.cpp)
 
 
 
