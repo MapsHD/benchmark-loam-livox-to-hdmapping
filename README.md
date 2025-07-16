@@ -27,7 +27,7 @@ Prepare recorded bag with estimated odometry:
 
 In first terminal record bag:
 ```shell
-rosbag record /velodyne_cloud_registered /aft_mapped_to_init"
+rosbag record /velodyne_cloud_registered /aft_mapped_to_init
 ```
 
 and start odometry:
