@@ -18,7 +18,7 @@ mkdir -p /test_ws/src
 cd /test_ws/src
 git clone https://github.com/marcinmatecki/loam-livox-to-hdmapping --recursive
 cd ..
-colcon build
+catkin_make
 ```
 
 ## Usage - data SLAM:
