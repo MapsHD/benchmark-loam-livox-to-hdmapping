@@ -76,7 +76,3 @@ rosrun loam-to-hdmapping listener <recorded_bag> <output_dir>
     CHANGED TO:
 
     #include <opencv2/opencv.hpp>
-
-
-
-
