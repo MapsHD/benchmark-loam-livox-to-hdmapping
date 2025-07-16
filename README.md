@@ -34,8 +34,8 @@ and start odometry:
 ```shell 
 cd /test_ws/
 source ./install/setup.sh # adjust to used shell
-For launch, check [loam-livox](https://github.com/hku-mars/loam_livox/)
-```
+For launch, check``` [loam-livox](https://github.com/hku-mars/loam_livox/)
+
 
 ## Usage - conversion:
 
