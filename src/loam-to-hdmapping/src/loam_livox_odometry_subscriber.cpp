@@ -5,7 +5,10 @@
 #include "pcl/point_types.h"
 #include <nav_msgs/Odometry.h>
 #include "pcl/conversions.h"
-#include <laszip/laszip_api.h>
+
+#include "laz_writer.hpp"
+
+
 #include <fstream> 
 #include <iostream>
 #include <string>

@@ -1,3 +1,7 @@
+#include "laz_writer.hpp"
+#include <laszip/laszip_api.h>
+#include <iostream>
+#include <limits>
 
 bool saveLaz(const std::string &filename, const std::vector<Point3Di> &points_global)
 {
