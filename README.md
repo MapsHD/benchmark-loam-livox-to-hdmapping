@@ -1,7 +1,5 @@
 # loam-livox-converter
 
-
-
 ## Intended use 
 
 This small toolset allows to integrate SLAM solution provided by [loam-livox](https://github.com/hku-mars/loam_livox/) with [HDMapping](https://github.com/MapsHD/HDMapping).
