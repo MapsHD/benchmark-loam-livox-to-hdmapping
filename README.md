@@ -93,7 +93,7 @@ rosbag record /velodyne_cloud_registered /aft_mapped_to_init -O {your_directory_
 
 ```shell
 cd /test_ws/
-source ./install/setup.sh # adjust to used shell
+source ./devel/setup.sh # adjust to used shell
 roslaunch loam_livox livox.launch
 rosbag play sequence.bag --clock /pp_points/synced2rgb:=/livox/lidar
 ```
@@ -109,6 +109,6 @@ Do it also in ros launch terminal by CTRL+C.
 
 ```shell
 cd /test_ws/
-source ./install/setup.sh # adjust to used shell
+source ./devel/setup.sh # adjust to used shell
 rosrun loam-to-hdmapping listener <recorded_bag> <output_dir>
 ```
